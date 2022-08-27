@@ -1,15 +1,11 @@
 package wordle;
 
 import java.net.HttpURLConnection;
-
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Map.Entry;
-
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
@@ -54,16 +50,22 @@ public static void getApi(String word) throws Exception {
 
         JSONArray definition = (JSONArray) definitions.get("definitions");
 
-        Iterator itr = definition.iterator();
+        JSONObject wordDef = (JSONObject)definition.get(0);
+
+        // JSONArray finalDef = (JSONArray) wordDef.get("defintion");
+   
+        System.out.println("The definition of "+ word + " is " +wordDef.get("definition"));
+
+        // Iterator itr = definition.iterator();
         
-        while (itr.hasNext())
-        {
-          itr = ((Map) itr.next()).entrySet().iterator();
-          while(itr.hasNext()){
-            Map.Entry pair = (Entry) itr.next();
-            System.out.println(pair.getKey() + " : " + pair.getValue());
-          }
-        }
+        // while (itr.hasNext())
+        // {
+        //   itr = ((Map) itr.next()).entrySet().iterator();
+        //   while(itr.hasNext()){
+        //     Map.Entry pair = (Entry) itr.next();
+        //     System.out.println(pair.getKey() + " : " + pair.getValue()+"\n");
+        //   }
+        // }
       }
     } catch (Exception e) {
       e.printStackTrace();

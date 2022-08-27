@@ -251,46 +251,48 @@ public class Wordle {
     int guesses = 6;
 
     String guess = "";
+
+    Intro.intro();
+
     while(!guess.equals(word)&&guesses>0){
 
-               System.out.println("\n You have " + guesses + " guesses remaining.");
-      // assigning user input
-      guess = userGuess.nextLine();
-
+      System.out.print("\nType your guess here: \n");
+      guess = userGuess.nextLine().toLowerCase().trim();
+      
       // Error provision for input
       if(guess.length()!=5){
-        System.out.println("\n Guess must be 5 characters.");
+        System.out.println("\nGuess must be 5 characters.");
         continue;
       }
-
-
-    
+      
       // Iterating and comparing word char to guess char
       for (int i = 0; i<word.length(); i++){
-          boolean found = false;
+        boolean found = false;
         for (int j = 0; j<word.length(); j++){
           if(guess.charAt(i)==word.charAt(i)){
             System.out.print("+");
             found = true;
             break;
           }
-          if(guess.charAt(i)==word.charAt(j)){
+          else if(guess.charAt(i)==word.charAt(j)){
             System.out.print("-");
             found = true;
             break;
-          }
+          } 
         }
         if(!found){
           System.out.print("*");
         }
       }
       guesses--;
+      if (guess != word){
+      System.out.println("\n\nYou have " + guesses + " guesses remaining.");}
     }
     userGuess.close();
     if (guess.equals(word)){
-      System.out.println("\n You guessed correctly! Good job!");
+      System.out.println("\nYou guessed correctly! Good job!");
     }
-    else System.out.println("\n You failed! The word was: "+word+" better luck next time.");
+    else System.out.println("\nYou failed! The word was: "+word+" better luck next time.");
     Api.getApi(word);
   }
 }

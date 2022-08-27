@@ -34,3 +34,9 @@ Recreate Wordle using Java, with console input and output.
 
 -   get user input (5 characters) in console and return output.
 -   output if letter is correct, right letter in the wrong position, or wrong letter (if/esle statement using filter and indexOf)
+
+# ToDo
+
+-   [ ] Fix right letter wrong place(display matching "-" to the ammount in word)
+-   [ ] Add ANSI
+-   [ ] Break down further into OOP
